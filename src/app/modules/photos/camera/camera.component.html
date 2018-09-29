@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-2">
+    <div class="webcam-wrapper">
+      <video #video [width]="videoWidth" [height]="videoHeight" [class]="videoStyleClasses" autoplay muted playsinline>
+      </video>
+      <div class="camera-switch" *ngIf="allowCameraSwitch && availableVideoInputs.length > 1 && videoInitialized" (click)="rotateVideoInput(true)">
+      </div>
+    </div>
+  </div>  
+  <div class="col-md-10">
+    <canvas #canvas [hidden]="true" [width]="640" [height]="480">
+    </canvas>
+  </div>  
+</div>

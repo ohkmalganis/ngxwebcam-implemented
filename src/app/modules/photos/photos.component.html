@@ -1,0 +1,37 @@
+<div class="main-container no-nav">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        Fotografias
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6 m-0 p-0">
+            <a class="btn btn-light btn-sm" title="Tomar foto" (click)="callCamera()">
+              Camera
+            </a>
+            <a class="btn btn-light btn-sm" title="Subir foto" (click)="callUpload()">
+              Files
+            </a>
+            <ng-camera *ngIf="camera" [height]="640" [width]="480" (imageCapture)="handleImage($event)"
+              [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions"
+              (initError)="handleInitError($event)">
+            </ng-camera>
+            <ng-upload *ngIf="!camera"></ng-upload>
+            <br *ngIf="!camera">
+            <button class="btn btn-dark btn-sm" (click)="savePhotos()"> Guardar Capturas</button>
+          </div>
+          <div class="col-md-6 m-0">
+            <div class="row mbot-medium">
+              <camera-src [code]="'pf'" leyenda="Perfil Frontal" [camera]="camera"></camera-src>
+              <camera-src [code]="'pi'" leyenda="Perfil Izquerdo" [camera]="camera"></camera-src>
+              <camera-src [code]="'pd'" leyenda="Perfil Derecho" [camera]="camera"></camera-src>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
